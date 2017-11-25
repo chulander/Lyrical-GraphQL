@@ -1,0 +1,6 @@
+export {default as App} from './App'
+export {default as SongCreate} from './SongCreate'
+export {default as SongList} from './SongList'
+export { default as SongDetail } from './SongDetail'
+export { default as LyricCreate} from './LyricCreate'
+export { default as LyricList} from './LyricList'
