@@ -6,28 +6,22 @@ class LyricCreate extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      content: '',
-    };
+      content:props.content
+    }
     this.onSubmit = this.onSubmit.bind(this);
   }
   onSubmit(event) {
     event.preventDefault();
-    this.props.mutate({
-      variables: {
-        songId: this.props.songId,
-        content: this.state.content,
-      },
-      refetchQueries: [
-        {
-          query: getSongDetail,
-          variables: {
-            id: this.props.songId,
-          },
+    this.props
+      .mutate({
+        variables: {
+          songId: this.props.songId,
+          content: this.state.content,
         },
-      ],
-    }).then(() => {
-      this.setState({content:''})
-    })
+      })
+      .then(() => {
+        this.setState({ content: '' });
+      });
   }
   render() {
     return (
@@ -44,6 +38,9 @@ class LyricCreate extends Component {
       </div>
     );
   }
+}
+LyricCreate.defaultProps = {
+  content: ''
 }
 
 export default graphql(addLyricToSong)(LyricCreate);
